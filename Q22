@@ -1,1 +1,21 @@
-Q
+/*ERROR*/
+
+SELECT 
+    W.id, 
+    WP.age, 
+    MIN(W.coins_needed) AS coins_needed, 
+    W.power
+FROM 
+    Wands W
+JOIN 
+    Wands_Property WP ON W.code = WP.code
+WHERE 
+    WP.is_evil = 0
+GROUP BY 
+    W.id, 
+    W.power, 
+    WP.age
+ORDER BY 
+    W.power DESC, 
+    WP.age DESC,
+    W.id;
